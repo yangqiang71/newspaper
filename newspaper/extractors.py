@@ -276,6 +276,7 @@ class ContentExtractor(object):
             title_text_h1 = title_text_h1_list[0]
             # discard too short texts
             # title lost or incorrect title for languages which do not use space as word divider
+            # https://www.penghutimes.com/Article/Detail/29633
             #if len(title_text_h1.split(' ')) <= 2:
             #    title_text_h1 = ''
             # clean double spaces
