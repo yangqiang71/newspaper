@@ -772,6 +772,10 @@ class ContentExtractor(object):
         return set(tags)
 
     def calculate_best_node(self, doc):
+        # TODO
+        # only one node returned,
+        # some contents in different nodes may lost
+        # https://www.ksnews.com.tw/v2023091801/
         top_node = None
         nodes_to_check = self.nodes_to_check(doc)
         starting_boost = float(1.0)
