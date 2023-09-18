@@ -985,7 +985,10 @@ class ContentExtractor(object):
             return False
 
         text = self.parser.getText(e)
-        words = [word for word in text.split() if word.isalnum()]
+        # why word must be isalnum? data lost for some chinese website
+        # https://penghudaily.blogspot.com/2023/06/18_01653094516.html
+        # words = [word for word in text.split() if word.isalnum()]
+        words = [word for word in text.split()]
         if not words:
             return True
         words_number = float(len(words))
@@ -1020,7 +1023,9 @@ class ContentExtractor(object):
         on like paragraphs and tables
         """
         nodes_to_check = []
-        for tag in ['p', 'pre', 'td']:
+        # https://penghudaily.blogspot.com/2023/06/18_01653094516.html
+        # add 'description' to check
+        for tag in ['p', 'pre', 'td', 'description']:
             items = self.parser.getElementsByTag(doc, tag=tag)
             nodes_to_check += items
         return nodes_to_check
